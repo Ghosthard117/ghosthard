@@ -8,6 +8,7 @@ import { formatDate } from "@/utils/formatDate";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import { PrismicNextLink } from "@prismicio/next";
 import { isFilled } from "@prismicio/client";
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode, Key } from "react";
 
 export default function ContentBody({
   page,
@@ -18,7 +19,7 @@ export default function ContentBody({
       <div className="rounded-2xl border-2 border-slate-800 bg-slate-900 px-4 py-10 md:px-8 md:py-20">
         <Heading as="h1">{page.data.title}</Heading>
         <div className="flex gap-4 text-yellow-400">
-          {page.tags.map((tag, index) => (
+          {page.tags.map((tag: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined, index: Key | null | undefined) => (
             <span key={index} className="text-xl font-bold">
               {tag}
             </span>
