@@ -28,7 +28,7 @@ export default function ContentList({
   const component = useRef(null);
   const itemsRef = useRef<Array<HTMLLIElement | null>>([]);
 
-  const setItemRef = useCallback((el: HTMLLIElement | null) => {
+  const setItemRef = useCallback((el: HTMLLIElement | null, index: number) => {
     itemsRef.current[index] = el;
   }, []);
 
@@ -148,7 +148,7 @@ export default function ContentList({
           return (
             <li
               key={index}
-              ref={setItemRef}
+              ref={(el) => setItemRef(el, index)}
               onMouseEnter={() => onMouseEnter(index)}
               className="list-item opacity-0"
             >
