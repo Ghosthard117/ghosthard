@@ -43,7 +43,7 @@ export default function ContentList({
   useGSAP(() => {
     // Animate list-items in with a stagger
     gsap.context(() => {
-      itemsRef.current.forEach((item, index) => {
+      itemsRef.current.forEach((item) => {
         gsap.fromTo(
           item,
           {
