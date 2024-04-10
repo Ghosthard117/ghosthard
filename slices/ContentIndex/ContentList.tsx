@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { asImageSrc, isFilled } from "@prismicio/client";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -27,6 +27,11 @@ export default function ContentList({
 }: ContentListProps) {
   const component = useRef(null);
   const itemsRef = useRef<Array<HTMLLIElement | null>>([]);
+
+  const setItemRef = useCallback((el: HTMLLIElement | null) => {
+    itemsRef.current[index] = el;
+  }, []);
+
 
   const revealRef = useRef(null);
   const [currentItem, setCurrentItem] = useState<null | number>(null);
@@ -143,7 +148,7 @@ export default function ContentList({
           return (
             <li
               key={index}
-              ref={(el) => (itemsRef.current[index] = el)}
+              ref={setItemRef}
               onMouseEnter={() => onMouseEnter(index)}
               className="list-item opacity-0"
             >
